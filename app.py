@@ -10,9 +10,10 @@ def hello_world():
   return render_template('home.html', jobs=jobs, company_name='JobMile')
 
 
-@app.route("/jobs")
+@app.route("/api/jobs")
 def list_jobs():
-  return jsonify(JOBS)
+  jobs = load_jobs_from_db()
+  return jsonify(jobs)
 
 
 if __name__ == '__main__':
